@@ -20,8 +20,8 @@ RUN ["/bin/bash", "-c" , "source activate ipykernel_py2 && conda install pandas 
 USER jovyan
 
 # get client library
-RUN git clone https://github.com/PaulMakepeace/refine-client-py && \
-  cp -pR refine-client-py/google ./  
+#RUN git clone https://github.com/PaulMakepeace/refine-client-py && \
+#  cp -pR refine-client-py/google ./  
 
 
 # install and run openrefine
@@ -30,6 +30,10 @@ RUN wget https://github.com/OpenRefine/OpenRefine/releases/download/3.0/openrefi
 
 # Copy Notebook file
 user root
+
+RUN git clone --recursive https://github.com/LanLi2017/OR-Prov-Reproducibility
+
+RUN ["/bin/bash", "-c" , "cd /OR-Prov-Reproducibility/refine-client-py && source activate ipykernel_py2 && python setup.py install && source deactivate"]
 
 COPY . .
 
