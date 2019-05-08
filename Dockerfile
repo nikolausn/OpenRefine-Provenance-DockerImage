@@ -31,8 +31,6 @@ RUN wget https://github.com/OpenRefine/OpenRefine/releases/download/3.0/openrefi
 # Copy Notebook file
 user root
 
-RUN git clone --recursive https://github.com/LanLi2017/OR-Prov-Reproducibility
-
 RUN ["/bin/bash", "-c" , "source activate ipykernel_py2 && pip install -i https://test.pypi.org/simple/ orprov-cli && source deactivate"]
 
 COPY . .
